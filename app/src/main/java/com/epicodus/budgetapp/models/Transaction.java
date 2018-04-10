@@ -6,14 +6,16 @@ public class Transaction {
     private Integer amount;
     private String debitOrCredit;
     private String transType;
+    private String cleared;
     private Integer id;
 
-    public Transaction(String date, String debitOrCredit, String note, Integer amount, String transType) {
+    public Transaction(String date, String note, Integer amount, String debitOrCredit, String transType, String cleared) {
         this.date = date;
-        this.debitOrCredit = debitOrCredit;
         this.note = note;
         this.amount = amount;
+        this.debitOrCredit = debitOrCredit;
         this.transType = transType;
+        this.cleared = cleared;
     }
 
     public String getDate() {
@@ -62,5 +64,13 @@ public class Transaction {
 
     public void setDebitOrCredit(String debitOrCredit) {
         this.debitOrCredit = debitOrCredit;
+    }
+
+    public String getCleared() {
+        return cleared;
+    }
+
+    public void setCleared(String cleared) {
+        this.cleared = cleared;
     }
 }
