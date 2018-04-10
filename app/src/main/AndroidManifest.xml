@@ -19,7 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BudgetActivity"></activity>
+        <activity android:name=".BudgetActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.budgetapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

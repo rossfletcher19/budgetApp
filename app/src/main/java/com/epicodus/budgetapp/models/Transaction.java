@@ -4,11 +4,13 @@ public class Transaction {
     private String date;
     private String note;
     private Integer amount;
+    private String debitOrCredit;
     private String transType;
     private Integer id;
 
-    public Transaction(String date, String note, Integer amount, String transType) {
+    public Transaction(String date, String debitOrCredit, String note, Integer amount, String transType) {
         this.date = date;
+        this.debitOrCredit = debitOrCredit;
         this.note = note;
         this.amount = amount;
         this.transType = transType;
@@ -52,5 +54,13 @@ public class Transaction {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDebitOrCredit() {
+        return debitOrCredit;
+    }
+
+    public void setDebitOrCredit(String debitOrCredit) {
+        this.debitOrCredit = debitOrCredit;
     }
 }

@@ -8,6 +8,7 @@ public class Budget {
     private Integer running_bal;
     private ArrayList<Transaction> transactions;
     private String month;
+    private Integer id;
 
     public Budget(Integer net_income, Integer after_mandatory_exp, Integer running_bal, ArrayList<Transaction> transactions, String month) {
         this.net_income = net_income;
@@ -55,5 +56,13 @@ public class Budget {
 
     public void setMonth(String month) {
         this.month = month;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
