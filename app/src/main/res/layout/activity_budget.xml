@@ -7,116 +7,81 @@
     tools:context=".BudgetActivity">
 
     <TextView
-        android:id="@+id/tvNetIcome"
+        android:id="@+id/tvNetIncomeOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="16dp"
-        android:text="net income"
-        app:layout_constraintBottom_toTopOf="@+id/gvExpenses"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/etStartBalDeposit"
-        android:layout_width="108dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="start bal. | deposit"
-        android:inputType="numberDecimal"
-        android:singleLine="false"
-        app:layout_constraintBottom_toTopOf="@+id/gvExpenses"
-        app:layout_constraintStart_toEndOf="@+id/tvNetIcome"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/bAddDeposit"
-        android:layout_width="60dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="+$$"
-        app:layout_constraintBottom_toTopOf="@+id/gvExpenses"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/etStartBalDeposit"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginTop="88dp"
+        android:text="1234"
+        app:layout_constraintStart_toEndOf="@+id/tvNetIncome"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etTransDate"
-        android:layout_width="77dp"
+        android:layout_width="59dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="date"
         android:inputType="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNetIcome" />
+        app:layout_constraintStart_toEndOf="@+id/rgDebitCredit"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etTransNote"
-        android:layout_width="76dp"
+        android:layout_width="72dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="note"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/etTransDate"
-        app:layout_constraintTop_toBottomOf="@+id/tvNetIcome" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etTransAmt"
-        android:layout_width="75dp"
+        android:layout_width="61dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="amt"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/etTransNote"
-        app:layout_constraintTop_toBottomOf="@+id/tvNetIcome" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etTransType"
-        android:layout_width="65dp"
+        android:layout_width="66dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="type"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toEndOf="@+id/etTransAmt"
-        app:layout_constraintTop_toBottomOf="@+id/tvNetIcome" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bTransSubmitButton"
-        android:layout_width="60dp"
+        android:layout_width="81dp"
         android:layout_height="47dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="-$$"
+        android:layout_marginTop="60dp"
+        android:text="submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/etTransType"
-        app:layout_constraintTop_toBottomOf="@+id/tvNetIcome" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <GridView
         android:id="@+id/gvExpenses"
         android:layout_width="395dp"
-        android:layout_height="282dp"
-        android:layout_marginTop="128dp"
+        android:layout_height="306dp"
+        android:layout_marginTop="120dp"
         android:background="@color/colorPrimaryLight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,6 +149,42 @@
         android:text="1234"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvTransHistory" />
+
+    <RadioGroup
+        android:id="@+id/rgDebitCredit"
+        android:layout_width="81dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbDebit"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Debit"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/rbCredit"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Credit"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvNetIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:text="Net Income:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
