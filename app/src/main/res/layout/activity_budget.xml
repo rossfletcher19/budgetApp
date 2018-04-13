@@ -18,7 +18,7 @@
 
     <EditText
         android:id="@+id/etTransDate"
-        android:layout_width="123dp"
+        android:layout_width="98dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="68dp"
@@ -29,15 +29,15 @@
         app:layout_constraintEnd_toStartOf="@+id/bTransSubmitButton"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/etTransNote"
         android:layout_width="72dp"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="note"
-        android:inputType="textPersonName"
+        android:text="add notes"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -153,8 +153,8 @@
 
     <RadioGroup
         android:id="@+id/rgDebitCredit"
-        android:layout_width="81dp"
-        android:layout_height="72dp"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +170,7 @@
 
         <RadioButton
             android:id="@+id/rbCredit"
-            android:layout_width="88dp"
+            android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="Credit"

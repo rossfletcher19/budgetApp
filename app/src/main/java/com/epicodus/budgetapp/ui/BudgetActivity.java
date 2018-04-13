@@ -1,6 +1,7 @@
 package com.epicodus.budgetapp.ui;
 
 import android.app.DatePickerDialog;
+import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.support.v4.app.DialogFragment;
+
 
 import com.epicodus.budgetapp.R;
 import com.epicodus.budgetapp.models.Budget;
@@ -33,7 +36,7 @@ public class BudgetActivity extends AppCompatActivity {
     @BindView(R.id.rvTransHistory) RecyclerView rvTransHistoryLabel;
     @BindView(R.id.etTransDate) EditText etTransDateLabel;
     @BindView(R.id.etTransAmt) EditText etTransAmtLabel;
-    @BindView(R.id.etTransNote) EditText etTransNoteLabel;
+    @BindView(R.id.etTransNote) TextView etTransNoteLabel;
     @BindView(R.id.etTransType) EditText etTransTypeLabel;
     @BindView(R.id.bTransSubmitButton) Button bTransSubmitButtonLabel;
     @BindView(R.id.rgDebitCredit) RadioGroup rgDebitCreditLabel;
@@ -105,7 +108,14 @@ public class BudgetActivity extends AppCompatActivity {
             }
         });
 
-
+        etTransNoteLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getFragmentManager();
+                NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
+                noteDialogFragment.show(fm, "note dialog");
+            }
+        });
 
     }
 
