@@ -2,6 +2,8 @@ package com.epicodus.budgetapp.ui;
 
 import android.app.DatePickerDialog;
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +33,7 @@ import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BudgetActivity extends AppCompatActivity {
+public class BudgetActivity extends FragmentActivity{
     @BindView(R.id.tvNetIncomeOutput) TextView tvNetIncomeOutputLabel;
     @BindView(R.id.tvAfterMandOutput) TextView tvAfterMandOutputLabel;
     @BindView(R.id.tvRunninBalOutput) TextView tvRunninBalOutputLabel;
@@ -60,6 +62,7 @@ public class BudgetActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         budget = new Budget(0,0,0, transactions, "");
         EditText dateEditText = (EditText) findViewById(R.id.etTransDate);
+
         ArrayAdapter<String> transTypeAdapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, transactionCategories);
 
         Spinner spinner = (Spinner) findViewById(R.id.spTransType);
@@ -71,6 +74,7 @@ public class BudgetActivity extends AppCompatActivity {
         spinner.setAdapter(transTypeArrayAdapterSp);
 
 
+
         tvNetIncomeOutputLabel.setText(String.format("%s", budget.getNet_income()));
         tvAfterMandOutputLabel.setText(String.format("%s", budget.getAfter_mandatory_exp()));
         tvRunninBalOutputLabel.setText(String.format("%s", budget.getRunning_bal()));
@@ -78,20 +82,17 @@ public class BudgetActivity extends AppCompatActivity {
         bTransSubmitButtonLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String transNote = etTransNoteLabel.getText().toString();
-                Integer transAmount = Integer.parseInt(etTransAmtLabel.getText().toString());
                 int selectedId = rgDebitCreditLabel.getCheckedRadioButtonId();
                 RadioButton radioButton = (RadioButton) findViewById(selectedId);
                 String rDebitOrCreditSelection = radioButton.getText().toString();
+                Integer transAmount = Integer.parseInt(etTransAmtLabel.getText().toString());
                 String transDate = etTransDateLabel.getText().toString();
+                String transType = spTransTypeLabel.getSelectedItem().toString();
+                String transNote = getIntent().getExtras().getString("transNote");
 
 
-                Transaction transaction = new Transaction(transDate,transNote,transAmount,rDebitOrCreditSelection,"","");
-                System.out.println(transaction.getAmount());
-
-
-
+                Transaction transaction = new Transaction(transDate,transNote,transAmount,rDebitOrCreditSelection,transType,"");
+                System.out.println(transaction.getNote());
 
             }
         });
@@ -101,7 +102,6 @@ public class BudgetActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                // TODO Auto-generated method stub
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -114,7 +114,6 @@ public class BudgetActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new DatePickerDialog(BudgetActivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -132,15 +131,6 @@ public class BudgetActivity extends AppCompatActivity {
 
     }
 
-//    public String setTransDate(){
-//
-//        cal.add(Calendar.DATE, 1);
-//        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-//        String formattedDate = format1.format(cal.getTime());
-//        System.out.println(formattedDate);
-//        return formattedDate;
-//
-//    }
 
     private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
