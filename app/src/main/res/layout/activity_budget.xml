@@ -16,56 +16,56 @@
         app:layout_constraintStart_toEndOf="@+id/tvNetIncome"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <EditText
+        android:id="@+id/etTransAmt"
+        android:layout_width="61dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="amt"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/etTransDate"
-        android:layout_width="98dp"
+        android:layout_width="116dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:clickable="true"
         android:editable="false"
         android:ems="10"
         android:hint="date"
-        app:layout_constraintEnd_toStartOf="@+id/bTransSubmitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toEndOf="@+id/etTransAmt"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/etTransNote"
         android:layout_width="72dp"
         android:layout_height="39dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
-        android:text="add notes"
         android:gravity="center"
+        android:text="add notes"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etTransAmt"
-        android:layout_width="61dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="amt"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/etTransNote"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <AutoCompleteTextView
-        android:id="@+id/etTransType"
-        android:layout_width="66dp"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:id="@+id/spTransType"
+        android:layout_width="109dp"
+        android:layout_height="37dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
-        app:layout_constraintStart_toEndOf="@+id/etTransAmt"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toStartOf="@+id/bTransSubmitButton"
+        app:layout_constraintStart_toEndOf="@+id/etTransNote"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -153,9 +153,9 @@
 
     <RadioGroup
         android:id="@+id/rgDebitCredit"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="87dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

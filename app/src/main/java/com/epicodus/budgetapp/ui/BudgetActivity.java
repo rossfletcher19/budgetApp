@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.support.v4.app.DialogFragment;
 
@@ -37,7 +39,7 @@ public class BudgetActivity extends AppCompatActivity {
     @BindView(R.id.etTransDate) EditText etTransDateLabel;
     @BindView(R.id.etTransAmt) EditText etTransAmtLabel;
     @BindView(R.id.etTransNote) TextView etTransNoteLabel;
-    @BindView(R.id.etTransType) EditText etTransTypeLabel;
+    @BindView(R.id.spTransType) Spinner spTransTypeLabel;
     @BindView(R.id.bTransSubmitButton) Button bTransSubmitButtonLabel;
     @BindView(R.id.rgDebitCredit) RadioGroup rgDebitCreditLabel;
 
@@ -58,6 +60,16 @@ public class BudgetActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         budget = new Budget(0,0,0, transactions, "");
         EditText dateEditText = (EditText) findViewById(R.id.etTransDate);
+        ArrayAdapter<String> transTypeAdapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, transactionCategories);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spTransType);
+        ArrayAdapter<String> transTypeArrayAdapterSp = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item,
+                        transactionCategories);
+        transTypeArrayAdapterSp.setDropDownViewResource(android.R.layout
+                .simple_spinner_dropdown_item);
+        spinner.setAdapter(transTypeArrayAdapterSp);
+
 
         tvNetIncomeOutputLabel.setText(String.format("%s", budget.getNet_income()));
         tvAfterMandOutputLabel.setText(String.format("%s", budget.getAfter_mandatory_exp()));
@@ -73,6 +85,7 @@ public class BudgetActivity extends AppCompatActivity {
                 RadioButton radioButton = (RadioButton) findViewById(selectedId);
                 String rDebitOrCreditSelection = radioButton.getText().toString();
                 String transDate = etTransDateLabel.getText().toString();
+
 
                 Transaction transaction = new Transaction(transDate,transNote,transAmount,rDebitOrCreditSelection,"","");
                 System.out.println(transaction.getAmount());
