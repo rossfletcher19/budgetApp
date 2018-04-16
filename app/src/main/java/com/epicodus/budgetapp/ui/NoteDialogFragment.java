@@ -34,8 +34,11 @@ public class NoteDialogFragment extends DialogFragment {
             public void onClick(View v) {
                 EditText transNotesEt = (EditText) rootView.findViewById(R.id.etTransNote);
                 String transNotes = transNotesEt.getText().toString();
-                Intent intent = new Intent(getContext(), BudgetActivity.class);
-                intent.putExtra("transNotes", transNotes);
+                System.out.println(transNotes);
+                Bundle bundle = new Bundle();
+                bundle.putString("transNotes", transNotes);
+                Intent intent = getActivity().getIntent();
+                intent.putExtras(bundle);
                 dismiss();
             }
         });

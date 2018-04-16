@@ -88,11 +88,12 @@ public class BudgetActivity extends FragmentActivity{
                 Integer transAmount = Integer.parseInt(etTransAmtLabel.getText().toString());
                 String transDate = etTransDateLabel.getText().toString();
                 String transType = spTransTypeLabel.getSelectedItem().toString();
-                String transNote = getIntent().getExtras().getString("transNote");
+                Bundle bundle = getIntent().getExtras();
+                String transNote = bundle.getString("transNotes");
 
 
                 Transaction transaction = new Transaction(transDate,transNote,transAmount,rDebitOrCreditSelection,transType,"");
-                System.out.println(transaction.getNote());
+
 
             }
         });
