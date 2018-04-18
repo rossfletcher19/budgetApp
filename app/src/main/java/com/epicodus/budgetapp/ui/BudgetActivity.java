@@ -70,10 +70,39 @@ public class BudgetActivity extends FragmentActivity{
         spinner.setAdapter(transTypeArrayAdapterSp);
 
 
-
         tvNetIncomeOutputLabel.setText(String.format("%s", budget.getNet_income()));
         tvAfterMandOutputLabel.setText(String.format("%s", budget.getAfter_mandatory_exp()));
         tvRunninBalOutputLabel.setText(String.format("%s", budget.getRunning_bal()));
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+        dateEditText.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(BudgetActivity.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        etTransNoteActLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getFragmentManager();
+                NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
+                noteDialogFragment.show(fm, "note dialog");
+            }
+        });
 
         bTransSubmitButtonLabel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,46 +119,12 @@ public class BudgetActivity extends FragmentActivity{
 
                 Transaction transaction = new Transaction(transDate,transNote,transAmount,rDebitOrCreditSelection,transType,"","");
 
+                System.out.println(transaction.getNote());
+
 
             }
         });
-
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
-
-        };
-
-        dateEditText.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(BudgetActivity.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-
-        etTransNoteActLabel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fm = getFragmentManager();
-                NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
-                noteDialogFragment.show(fm, "note dialog");
-            }
-        });
-
     }
-
-
-
 
     private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
