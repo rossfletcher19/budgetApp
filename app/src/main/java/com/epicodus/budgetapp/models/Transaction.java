@@ -7,14 +7,16 @@ public class Transaction {
     private String debitOrCredit;
     private String transType;
     private String cleared;
+    private String nowOrFuture;
     private Integer id;
 
-    public Transaction(String date, String note, Integer amount, String debitOrCredit, String transType, String cleared) {
+    public Transaction(String date, String note, Integer amount, String debitOrCredit, String transType, String nowOrFuture, String  cleared) {
         this.date = date;
         this.note = note;
         this.amount = amount;
         this.debitOrCredit = debitOrCredit;
         this.transType = transType;
+        this.nowOrFuture = nowOrFuture;
         this.cleared = cleared;
     }
 
@@ -64,6 +66,14 @@ public class Transaction {
 
     public void setDebitOrCredit(String debitOrCredit) {
         this.debitOrCredit = debitOrCredit;
+    }
+
+    public String getNowOrFuture() {
+        return nowOrFuture;
+    }
+
+    public void setNowOrFuture(String nowOrFuture) {
+        this.nowOrFuture = nowOrFuture;
     }
 
     public String getCleared() {

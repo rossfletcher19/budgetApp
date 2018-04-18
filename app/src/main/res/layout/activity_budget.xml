@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/etTransNote"
+        android:id="@+id/etTransNoteAct"
         android:layout_width="72dp"
         android:layout_height="39dp"
         android:layout_marginStart="128dp"
@@ -65,7 +65,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="68dp"
         app:layout_constraintEnd_toStartOf="@+id/bTransSubmitButton"
-        app:layout_constraintStart_toEndOf="@+id/etTransNote"
+        app:layout_constraintStart_toEndOf="@+id/etTransNoteAct"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

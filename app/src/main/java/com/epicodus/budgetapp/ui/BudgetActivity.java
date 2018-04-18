@@ -40,7 +40,7 @@ public class BudgetActivity extends FragmentActivity{
     @BindView(R.id.rvTransHistory) RecyclerView rvTransHistoryLabel;
     @BindView(R.id.etTransDate) EditText etTransDateLabel;
     @BindView(R.id.etTransAmt) EditText etTransAmtLabel;
-    @BindView(R.id.etTransNote) TextView etTransNoteLabel;
+    @BindView(R.id.etTransNoteAct) TextView etTransNoteActLabel;
     @BindView(R.id.spTransType) Spinner spTransTypeLabel;
     @BindView(R.id.bTransSubmitButton) Button bTransSubmitButtonLabel;
     @BindView(R.id.rgDebitCredit) RadioGroup rgDebitCreditLabel;
@@ -63,14 +63,10 @@ public class BudgetActivity extends FragmentActivity{
         budget = new Budget(0,0,0, transactions, "");
         EditText dateEditText = (EditText) findViewById(R.id.etTransDate);
 
-        ArrayAdapter<String> transTypeAdapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, transactionCategories);
 
         Spinner spinner = (Spinner) findViewById(R.id.spTransType);
-        ArrayAdapter<String> transTypeArrayAdapterSp = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item,
-                        transactionCategories);
-        transTypeArrayAdapterSp.setDropDownViewResource(android.R.layout
-                .simple_spinner_dropdown_item);
+        ArrayAdapter<String> transTypeArrayAdapterSp = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, transactionCategories);
+        transTypeArrayAdapterSp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(transTypeArrayAdapterSp);
 
 
@@ -92,7 +88,7 @@ public class BudgetActivity extends FragmentActivity{
                 String transNote = bundle.getString("transNotes");
 
 
-                Transaction transaction = new Transaction(transDate,transNote,transAmount,rDebitOrCreditSelection,transType,"");
+                Transaction transaction = new Transaction(transDate,transNote,transAmount,rDebitOrCreditSelection,transType,"","");
 
 
             }
@@ -121,7 +117,7 @@ public class BudgetActivity extends FragmentActivity{
             }
         });
 
-        etTransNoteLabel.setOnClickListener(new View.OnClickListener() {
+        etTransNoteActLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fm = getFragmentManager();
@@ -133,14 +129,12 @@ public class BudgetActivity extends FragmentActivity{
     }
 
 
+
+
     private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         etTransDateLabel.setText(sdf.format(myCalendar.getTime()));
-
-
-
-
     }
 
 }
